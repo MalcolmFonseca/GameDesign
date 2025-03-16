@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Antagonist-MouseMale_0: 8127109307750273437
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
