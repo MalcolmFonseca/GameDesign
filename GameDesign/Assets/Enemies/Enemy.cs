@@ -1,3 +1,4 @@
+using Unity.IO.LowLevel.Unsafe;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
@@ -6,6 +7,12 @@ public class Enemy : MonoBehaviour
     public float speed = 2f;
 
     public virtual void Move() { }
+
+    public virtual void ChasePlayer() { }
+
+    public virtual void Patrol() { }
+
+
     public virtual void Attack() { }
     public virtual void TakeDamage(float amount)
     {

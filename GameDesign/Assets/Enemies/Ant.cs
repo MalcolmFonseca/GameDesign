@@ -50,7 +50,7 @@ public class Ant : Enemy
         }
     }
 
-    private void ChasePlayer()
+    public override void ChasePlayer()
     {
         Vector2 direction = (player.position - transform.position).normalized;
         rb.linearVelocity = new Vector2(direction.x * speed, rb.linearVelocity.y);
@@ -67,7 +67,7 @@ public class Ant : Enemy
         transform.position = new Vector2(clampedX, transform.position.y);
     }
 
-    private void Patrol()
+    public override void Patrol()
     {
         Vector2 direction = (currPoint - (Vector2)transform.position).normalized;
         rb.linearVelocity = new Vector2(direction.x * speed, rb.linearVelocity.y);
