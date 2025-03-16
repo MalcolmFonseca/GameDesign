@@ -1,0 +1,97 @@
+using UnityEngine;
+
+public class Ant : Enemy
+{
+    private Rigidbody2D rb;
+    private Vector2 pointA;
+    private Vector2 pointB;
+    private Vector2 currPoint;
+
+    public float patrolDistance = 3f;
+    public float detectionRange = 3f;
+    public Transform player;
+    private bool isChasing = false;
+    private bool isFacingRight = false;
+
+    void Start()
+    {
+        rb = GetComponent<Rigidbody2D>();
+
+        // Generate patrol points dynamically
+        pointA = transform.position - new Vector3(patrolDistance, 0, 0);
+        pointB = transform.position + new Vector3(patrolDistance, 0, 0);
+
+        currPoint = pointA;
+    }
+
+    void Update()
+    {
+        CheckPlayerDistance();
+        Move();
+    }
+
+    private void CheckPlayerDistance()
+    {
+        if (player == null) return;
+
+        float distanceToPlayer = Vector2.Distance(transform.position, player.position);
+        isChasing = distanceToPlayer <= detectionRange;
+    }
+
+    public override void Move()
+    {
+        if (isChasing)
+        {
+            ChasePlayer();
+        }
+        else
+        {
+            Patrol();
+        }
+    }
+
+    public override void ChasePlayer()
+    {
+        Vector2 direction = (player.position - transform.position).normalized;
+        rb.linearVelocity = new Vector2(direction.x * speed, rb.linearVelocity.y);
+
+        // Flip sprite only if direction changes
+        if ((direction.x > 0 && !isFacingRight) || (direction.x < 0 && isFacingRight))
+        {
+            FlipSprite();
+            isFacingRight = !isFacingRight;
+        }
+
+        // Constrain movement within patrol range
+        float clampedX = Mathf.Clamp(transform.position.x, pointA.x, pointB.x);
+        transform.position = new Vector2(clampedX, transform.position.y);
+    }
+
+    public override void Patrol()
+    {
+        Vector2 direction = (currPoint - (Vector2)transform.position).normalized;
+        rb.linearVelocity = new Vector2(direction.x * speed, rb.linearVelocity.y);
+
+        if (Vector2.Distance(transform.position, currPoint) < 0.5f)
+        {
+            currPoint = (currPoint == pointB) ? pointA : pointB;
+        }
+
+        // Flip sprite only when direction changes
+        if ((direction.x > 0 && !isFacingRight) || (direction.x < 0 && isFacingRight))
+        {
+            FlipSprite();
+            isFacingRight = !isFacingRight;
+        }
+    }
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(pointA, 0.5f);
+        Gizmos.DrawWireSphere(pointB, 0.5f);
+        Gizmos.DrawLine(pointA, pointB);
+
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, detectionRange); // Visualize detection radius
+    }
+}
