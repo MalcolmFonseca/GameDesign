@@ -23,7 +23,7 @@ public class Gun : MonoBehaviour
     void Update()
     {
         //stick to player
-        transform.position = new Vector2(playerObject.transform.position.x + .5f, playerObject.transform.position.y);
+        transform.position = new Vector2(playerObject.transform.position.x + 0.21f, playerObject.transform.position.y - 0.22f);
         //rotate towards cursor
         Vector3 mousePosition = Input.mousePosition;
         mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
