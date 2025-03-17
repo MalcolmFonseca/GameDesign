@@ -2,15 +2,15 @@ using UnityEngine;
 
 public class Ant : Enemy
 {
+    [Header("Behaviour")]
+    public float patrolDistance = 3f;
+    public float detectionRange = 3f;
+    public Transform player;
+
     private Rigidbody2D rb;
     private Vector2 pointA;
     private Vector2 pointB;
     private Vector2 currPoint;
-
-    public float patrolDistance = 3f;
-    public float detectionRange = 3f;
-    public Transform player;
-    private bool isChasing = false;
     private bool isFacingRight = false;
 
     void Start()
@@ -26,21 +26,14 @@ public class Ant : Enemy
 
     void Update()
     {
-        CheckPlayerDistance();
         Move();
-    }
-
-    private void CheckPlayerDistance()
-    {
-        if (player == null) return;
-
-        float distanceToPlayer = Vector2.Distance(transform.position, player.position);
-        isChasing = distanceToPlayer <= detectionRange;
     }
 
     public override void Move()
     {
-        if (isChasing)
+        float distanceToPlayer = Vector2.Distance(transform.position, player.position);
+
+        if (distanceToPlayer < detectionRange)
         {
             ChasePlayer();
         }
