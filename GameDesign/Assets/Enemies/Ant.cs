@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class Ant : Enemy
 {
+    [Header("Behaviour")]
     public float patrolDistance = 3f;
     public float detectionRange = 3f;
     public Transform player;

@@ -3,10 +3,12 @@ using Pathfinding;
 
 public class Wasp : Enemy
 {
+    [Header("Pathfinding")]
     public Transform target;
     public float nextWaypointDistance = 3f; // how close the wasp must be to the curr waypoint to move onto next one
     public float detectionRange = 10f; // distance b/w wasp and player for wasp to aggro
     public float hoverAmplitude = 1f; // how far wasps oscillate in the Y-axis when patrolling
+    public float pathUpdateSeconds = 1; // how often to recalculate path
 
     private Path path;
     private int currentWaypoint = 0;
@@ -20,7 +22,7 @@ public class Wasp : Enemy
         seeker = GetComponent<Seeker>();
         rb = GetComponent<Rigidbody2D>();
 
-        InvokeRepeating("Move", 0f, 1f); // recalculate path every second
+        InvokeRepeating("Move", 0f, pathUpdateSeconds); // recalculate path every second
         
         
     }

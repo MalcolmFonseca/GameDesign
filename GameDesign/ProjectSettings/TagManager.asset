@@ -7,6 +7,7 @@ TagManager:
   - Tumbleweed
   - Ground
   - AntEnemy
+  - WaspEnemy
   layers:
   - Default
   - TransparentFX
@@ -16,7 +17,7 @@ TagManager:
   - UI
   - Tumbleweed
   - Enemy
-  - TileMap
+  - Ground
   - 
   - 
   - 
