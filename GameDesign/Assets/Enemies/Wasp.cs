@@ -6,14 +6,13 @@ public class Wasp : Enemy
     public Transform target;
     public float nextWaypointDistance = 3f; // how close the wasp must be to the curr waypoint to move onto next one
     public float detectionRange = 10f; // distance b/w wasp and player for wasp to aggro
+    public float hoverAmplitude = 1f; // how far wasps oscillate in the Y-axis when patrolling
 
     private Path path;
     private int currentWaypoint = 0;
-    private bool isEndOfPath = false;
     private Seeker seeker;
     private Rigidbody2D rb;
     private bool isFacingRight = false;
-    private bool isChasing = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -32,14 +31,12 @@ public class Wasp : Enemy
 
         if (distanceToPlayer < detectionRange)
         {
-            isChasing = true;
             ChasePlayer();
 
         }
 
         else
         {
-            isChasing = false;
             Patrol();
         }
         
@@ -59,7 +56,8 @@ public class Wasp : Enemy
 
     public override void Patrol()
     {
-        rb.linearVelocity = Vector2.zero;
+        // Reset horizontal velocity and rotation
+        rb.linearVelocity = new Vector2(0f, Mathf.Sin(Time.time * speed) * hoverAmplitude);
         rb.angularVelocity = 0f;
     }
 
@@ -82,12 +80,7 @@ public class Wasp : Enemy
 
         if  (currentWaypoint >= path.vectorPath.Count)
         {
-            isEndOfPath = true;
             return;
-        }
-        else
-        {
-            isEndOfPath = false;
         }
 
         Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
