@@ -58,7 +58,6 @@ public class Wasp : Enemy
 
     public override void Patrol()
     {
-        // Reset horizontal velocity and rotation
         rb.linearVelocity = new Vector2(0f, Mathf.Sin(Time.time * speed) * hoverAmplitude);
         rb.angularVelocity = 0f;
     }

@@ -403,16 +403,14 @@ MonoBehaviour:
   health: 100
   speed: 25
   target: {fileID: 1449216653}
-  activateDistance: 10
+  detectionRange: 15
   pathUpdateSeconds: 1
   nextWaypointDistance: 3
   jumpNodeHeightRequirement: 0.8
   jumpModifier: 0.3
   jumpCheckOffset: 0.1
   jumpForce: 20
-  followEnabled: 1
   jumpEnabled: 1
-  directionLookEnabled: 1
 --- !u!1 &276986988
 GameObject:
   m_ObjectHideFlags: 0
@@ -3038,8 +3036,8 @@ GameObject:
   - component: {fileID: 815123932}
   - component: {fileID: 815123931}
   - component: {fileID: 815123930}
-  - component: {fileID: 815123929}
   - component: {fileID: 815123934}
+  - component: {fileID: 815123935}
   m_Layer: 7
   m_Name: WaspEnemy
   m_TagString: WaspEnemy
@@ -3047,25 +3045,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &815123929
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 815123928}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 730276e1daf419141bd755948cd9cbc3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 100
-  speed: 400
-  target: {fileID: 1449216653}
-  nextWaypointDistance: 3
-  detectionRange: 10
-  hoverAmplitude: 0.5
-  pathUpdateSeconds: 1
 --- !u!50 &815123930
 Rigidbody2D:
   serializedVersion: 5
@@ -3185,7 +3164,7 @@ Transform:
   m_GameObject: {fileID: 815123928}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10.05, y: 3.45, z: 0}
+  m_LocalPosition: {x: -2.4, y: 1.72, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3227,6 +3206,29 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 1
+--- !u!114 &815123935
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 815123928}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e08bd0c28d3c9e46aec4e803b91f864, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
+  speed: 100
+  target: {fileID: 815123933}
+  detectionRange: 15
+  pathUpdateSeconds: 1
+  nextWaypointDistance: 3
+  jumpNodeHeightRequirement: 0.8
+  jumpModifier: 0.8
+  jumpCheckOffset: 0.1
+  jumpForce: 10
+  jumpEnabled: 0
 --- !u!1 &900087410
 GameObject:
   m_ObjectHideFlags: 0
@@ -3391,7 +3393,7 @@ Transform:
   m_GameObject: {fileID: 1449216651}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 33.82, y: -16.29, z: 0}
+  m_LocalPosition: {x: -7.97, y: -2.28, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

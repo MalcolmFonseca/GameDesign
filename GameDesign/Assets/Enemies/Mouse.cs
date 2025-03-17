@@ -37,7 +37,7 @@ public class Mouse : Enemy
         seeker = GetComponent<Seeker>();
         rb = GetComponent<Rigidbody2D>();
 
-        InvokeRepeating("UpdatePath", 0f, pathUpdateSeconds);
+        InvokeRepeating("Move", 0f, pathUpdateSeconds);
     }
 
 
@@ -49,7 +49,23 @@ public class Mouse : Enemy
         }
     }
 
-    private void UpdatePath()
+    public override void Move()
+    {
+        if (TargetInDistance())
+        {
+            ChasePlayer();
+
+        }
+
+        else
+        {
+            Patrol();
+        }
+
+        
+    }
+
+    public override void ChasePlayer()
     {
         // see if collision in path
         Vector3 startOffset = transform.position - new Vector3(0f, GetComponent<Collider2D>().bounds.extents.y, transform.position.z);
@@ -57,7 +73,7 @@ public class Mouse : Enemy
 
         isGrounded = Physics2D.Raycast(startOffset, -Vector3.up, 0.5f, groundLayer);
 
-        if (followEnabled && TargetInDistance() && isGrounded && seeker.IsDone())
+        if (followEnabled && isGrounded && seeker.IsDone())
         {
             seeker.StartPath(rb.position, target.position, OnPathComplete);
         }
@@ -76,8 +92,6 @@ public class Mouse : Enemy
             return;
         }
 
-        
-
         // Direction Calculation
         Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
         Vector2 force = direction * speed;
@@ -87,15 +101,11 @@ public class Mouse : Enemy
         {
             if (direction.y > jumpNodeHeightRequirement)
             {
-                Debug.Log("JUMP");
                 rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
                 StartCoroutine(JumpCoolDown());
 
             }
         }
-
-
-
 
         // movement 
         rb.AddForce(force);
