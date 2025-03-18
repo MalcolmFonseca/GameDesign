@@ -4,24 +4,23 @@ using UnityEngine.Rendering;
 using System.Collections;
 
 
-public class Mouse : Enemy
+public class StandardEnemyAI : Enemy
 {
     [Header("Pathfinding")]
     public Transform target;
     public float detectionRange = 15f;
     public float pathUpdateSeconds = 1;
     public float nextWaypointDistance = 3f;
+    public float oscillationAmplitude = 1f;
 
-    [Header("Physics")]
+    [Header("Additional Behaviour")]
+    public bool horizontalPatrol = true;
+    public bool verticalPatrol = false;
+    public bool jumpEnabled = true;
     public float jumpNodeHeightRequirement = 0.8f; // height of next node to trigger jump
     public float jumpModifier = 0.8f; // strength/distance of jump
     public float jumpCheckOffset = 0.1f; // collider checking 
     public float jumpForce = 10f;
-
-    [Header("Custom Behaviour")]
-    public bool followEnabled = true;
-    public bool jumpEnabled = true;
-    public bool directionLookEnabled = true;
 
     private Path path;
     private int currentWaypoint = 0;
@@ -43,44 +42,7 @@ public class Mouse : Enemy
 
     void FixedUpdate()
     {
-        if (TargetInDistance() && followEnabled)
-        {
-            PathFollow();
-        }
-    }
 
-    public override void Move()
-    {
-        if (TargetInDistance())
-        {
-            ChasePlayer();
-
-        }
-
-        else
-        {
-            Patrol();
-        }
-
-        
-    }
-
-    public override void ChasePlayer()
-    {
-        // see if collision in path
-        Vector3 startOffset = transform.position - new Vector3(0f, GetComponent<Collider2D>().bounds.extents.y, transform.position.z);
-        int groundLayer = LayerMask.GetMask("Ground");
-
-        isGrounded = Physics2D.Raycast(startOffset, -Vector3.up, 0.5f, groundLayer);
-
-        if (followEnabled && isGrounded && seeker.IsDone())
-        {
-            seeker.StartPath(rb.position, target.position, OnPathComplete);
-        }
-    }
-
-    private void PathFollow()
-    {
         if (path == null)
         {
             return;
@@ -94,7 +56,7 @@ public class Mouse : Enemy
 
         // Direction Calculation
         Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
-        Vector2 force = direction * speed;
+        Vector2 force = direction * speed * Time.deltaTime;
 
         // jump
         if (jumpEnabled && isGrounded && !isOnCoolDown)
@@ -119,11 +81,65 @@ public class Mouse : Enemy
         }
 
         // flip sprite only when direction changes
-        if ((direction.x > 0 && !isFacingRight) || (direction.x < 0 && isFacingRight))
+        isFacingRight = FlipSprite(direction.x, isFacingRight);
+
+    }
+
+    public override void Move()
+    {
+        if (TargetInDistance())
         {
-            FlipSprite();
-            isFacingRight = !isFacingRight;
+            ChasePlayer();
+
         }
+
+        else
+        {
+            Patrol();
+        }
+
+        
+    }
+
+    public override void ChasePlayer()
+    {
+        // see if collision in path
+        if (jumpEnabled)
+        {
+            Vector3 startOffset = transform.position - new Vector3(0f, GetComponent<Collider2D>().bounds.extents.y, transform.position.z);
+            int groundLayer = LayerMask.GetMask("Ground");
+
+            isGrounded = Physics2D.Raycast(startOffset, -Vector3.up, 0.5f, groundLayer);
+        }
+
+        if (!seeker.IsDone()) return;
+
+
+        if (!jumpEnabled || (jumpEnabled && isGrounded))
+        {
+            seeker.StartPath(rb.position, target.position, OnPathComplete);
+        }
+    }
+
+    public override void Patrol()
+    {
+        float patrolMovement = Mathf.Sin(Time.time * speed) * oscillationAmplitude;
+        
+        if (horizontalPatrol)
+        {
+            rb.linearVelocity = new Vector2(patrolMovement, 0f);
+
+            // Flip sprite when direction changes
+            isFacingRight = FlipSprite(patrolMovement, isFacingRight);
+
+        }
+
+        if (verticalPatrol)
+        {
+            rb.linearVelocity = new Vector2(0f, patrolMovement);
+        }
+
+
 
     }
 

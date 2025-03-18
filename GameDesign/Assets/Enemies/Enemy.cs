@@ -1,4 +1,5 @@
 using Unity.IO.LowLevel.Unsafe;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
@@ -22,14 +23,22 @@ public class Enemy : MonoBehaviour
             Die();
     }
 
-    protected void FlipSprite() 
+    protected bool FlipSprite(float direction, bool isFacingRight) 
     {
-        
-        Vector3 localScale = transform.localScale;
-        localScale.x *= -1;
-        transform.localScale = localScale;
+        if ((direction > 0 && !isFacingRight) || (direction < 0 && isFacingRight))
+        {
+            Vector3 localScale = transform.localScale;
+            localScale.x *= -1;
+            transform.localScale = localScale;
 
+            return !isFacingRight;
+        }
+
+        return isFacingRight;
         
+
+
+
     }
 
     protected void Die()
