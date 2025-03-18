@@ -4,11 +4,9 @@ using UnityEngine.Rendering;
 using System.Collections;
 
 
-public class StandardEnemyAI : Enemy
+public class StandardEnemyAI : EnemyAI
 {
     [Header("Pathfinding")]
-    public Transform target;
-    public float detectionRange = 15f;
     public float pathUpdateSeconds = 1;
     public float nextWaypointDistance = 3f;
     public float oscillationAmplitude = 1f;
@@ -31,10 +29,13 @@ public class StandardEnemyAI : Enemy
     private bool isOnCoolDown = false;
 
 
+
+
     void Start()
     {
         seeker = GetComponent<Seeker>();
         rb = GetComponent<Rigidbody2D>();
+        enemyShooting = GetComponent<EnemyShooting>();
 
         InvokeRepeating("Move", 0f, pathUpdateSeconds);
     }
@@ -87,17 +88,7 @@ public class StandardEnemyAI : Enemy
 
     public override void Move()
     {
-        if (TargetInDistance())
-        {
-            ChasePlayer();
-
-        }
-
-        else
-        {
-            Patrol();
-        }
-
+        base.Move();
         
     }
 
@@ -117,7 +108,7 @@ public class StandardEnemyAI : Enemy
 
         if (!jumpEnabled || (jumpEnabled && isGrounded))
         {
-            seeker.StartPath(rb.position, target.position, OnPathComplete);
+            seeker.StartPath(rb.position, player.position, OnPathComplete);
         }
     }
 
@@ -151,11 +142,6 @@ public class StandardEnemyAI : Enemy
         isOnCoolDown = false;
     }
 
-
-    private bool TargetInDistance()
-    {
-        return Vector2.Distance(transform.position, target.position) < detectionRange;
-    }
 
     private void OnPathComplete(Path p)
     {

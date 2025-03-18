@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Underworld-Rocks3_0: -3825415403535225426
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -1,11 +1,9 @@
 using UnityEngine;
 
-public class SimpleEnemyAI : Enemy
+public class SimpleEnemyAI : EnemyAI
 {
     [Header("Behaviour")]
     public float patrolDistance = 3f;
-    public float detectionRange = 3f;
-    public Transform player;
 
     private Rigidbody2D rb;
     private Vector2 pointA;
@@ -16,6 +14,7 @@ public class SimpleEnemyAI : Enemy
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        enemyShooting = GetComponent<EnemyShooting>();
 
         // Generate patrol points dynamically
         pointA = transform.position - new Vector3(patrolDistance, 0, 0);
@@ -31,16 +30,7 @@ public class SimpleEnemyAI : Enemy
 
     public override void Move()
     {
-        float distanceToPlayer = Vector2.Distance(transform.position, player.position);
-
-        if (distanceToPlayer < detectionRange)
-        {
-            ChasePlayer();
-        }
-        else
-        {
-            Patrol();
-        }
+        base.Move();
     }
 
     public override void ChasePlayer()
