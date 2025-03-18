@@ -3490,6 +3490,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83e5062bdf5e04846a92964bb72e3866, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  groundFilter:
+    useTriggers: 0
+    useLayerMask: 0
+    useDepth: 0
+    useOutsideDepth: 0
+    useNormalAngle: 0
+    useOutsideNormalAngle: 0
+    layerMask:
+      serializedVersion: 2
+      m_Bits: 256
+    minDepth: 0
+    maxDepth: 0
+    minNormalAngle: 0
+    maxNormalAngle: 0
   moveAction:
     m_Name: Move
     m_Type: 0
