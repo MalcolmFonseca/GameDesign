@@ -8,6 +8,7 @@ TagManager:
   - Ground
   - AntEnemy
   - WaspEnemy
+  - MouseEnemy
   layers:
   - Default
   - TransparentFX
@@ -44,6 +45,27 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: 1BG
+    uniqueID: 2011733967
+    locked: 0
+  - name: 2BG
+    uniqueID: 2130557203
+    locked: 0
+  - name: 3BG
+    uniqueID: 2585434615
+    locked: 0
+  - name: 4BG
+    uniqueID: 3586636127
+    locked: 0
+  - name: 5BG
+    uniqueID: 4114328501
+    locked: 0
+  - name: Ground
+    uniqueID: 3254939547
+    locked: 0
+  - name: Sprites
+    uniqueID: 3361564491
     locked: 0
   - name: Gun
     uniqueID: 1739089287
