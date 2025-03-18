@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Ant : Enemy
+public class SimpleEnemyAI : Enemy
 {
     [Header("Behaviour")]
     public float patrolDistance = 3f;
@@ -49,12 +49,8 @@ public class Ant : Enemy
         rb.linearVelocity = new Vector2(direction.x * speed, rb.linearVelocity.y);
 
         // Flip sprite only if direction changes
-        if ((direction.x > 0 && !isFacingRight) || (direction.x < 0 && isFacingRight))
-        {
-            FlipSprite();
-            isFacingRight = !isFacingRight;
-        }
-
+        isFacingRight = FlipSprite(direction.x, isFacingRight);
+        
         // Constrain movement within patrol range
         float clampedX = Mathf.Clamp(transform.position.x, pointA.x, pointB.x);
         transform.position = new Vector2(clampedX, transform.position.y);
@@ -70,12 +66,8 @@ public class Ant : Enemy
             currPoint = (currPoint == pointB) ? pointA : pointB;
         }
 
-        // Flip sprite only when direction changes
-        if ((direction.x > 0 && !isFacingRight) || (direction.x < 0 && isFacingRight))
-        {
-            FlipSprite();
-            isFacingRight = !isFacingRight;
-        }
+        isFacingRight = FlipSprite(direction.x, isFacingRight);
+
     }
     private void OnDrawGizmos()
     {
