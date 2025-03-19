@@ -2,6 +2,8 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering;
+using System.Collections; 
+
 
 public class Player : MonoBehaviour
 {
@@ -53,11 +55,15 @@ public class Player : MonoBehaviour
         currentHealth -= damage;
         healthBar.SetHealth(currentHealth);
 
+        StartCoroutine(FlashRed()); // flash sprite red
+
+
         if (currentHealth <= 0)
         {
             Destroy(gameObject);
         }
     }
+
 
     public void Shoot(float launchPower, Vector2 direction)
     {
@@ -69,6 +75,19 @@ public class Player : MonoBehaviour
     {
         return rigidbody2d.IsTouching(groundFilter);
     }
+
+    // briefly change sprite colour upon taking damage
+    private IEnumerator FlashRed()
+    {
+        SpriteRenderer sr = GetComponent<SpriteRenderer>();
+        if (sr != null)
+        {
+            sr.color = Color.red; // Change color to red
+            yield return new WaitForSeconds(0.2f); // Wait for 0.2 seconds
+            sr.color = Color.white; // Reset color to default (white)
+        }
+    }
+
 
 
 }
