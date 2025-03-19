@@ -5,8 +5,12 @@ using UnityEngine.Rendering;
 
 public class Player : MonoBehaviour
 {
+    public int maxHealth = 20;
+    public HealthBar healthBar;
+
+    private int currentHealth;
+
     private Rigidbody2D rigidbody2d;
-    private BoxCollider2D collider2d;
     private float speed = 1f;
     private Vector2 move;
     [SerializeField] private ContactFilter2D groundFilter;
@@ -17,7 +21,9 @@ public class Player : MonoBehaviour
     {
         moveAction.Enable();
         rigidbody2d = GetComponent<Rigidbody2D>();
-        collider2d = GetComponent<BoxCollider2D>();
+
+        currentHealth = maxHealth;
+        healthBar.SetMaxHealth(maxHealth);
     }
 
     void Update()
@@ -41,6 +47,18 @@ public class Player : MonoBehaviour
         }
     }
 
+    // TODO: Game over screen upon death
+    public void TakeDamage(int damage)
+    {
+        currentHealth -= damage;
+        healthBar.SetHealth(currentHealth);
+
+        if (currentHealth <= 0)
+        {
+            Destroy(gameObject);
+        }
+    }
+
     public void Shoot(float launchPower, Vector2 direction)
     {
         rigidbody2d.linearVelocity = new Vector2(-direction.x * launchPower, -direction.y * launchPower);
@@ -50,5 +68,7 @@ public class Player : MonoBehaviour
     private bool Grounded()
     {
         return rigidbody2d.IsTouching(groundFilter);
-}
+    }
+
+
 }
