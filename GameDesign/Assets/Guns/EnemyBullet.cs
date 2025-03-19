@@ -3,9 +3,11 @@ using UnityEngine;
 public class EnemyBullet : MonoBehaviour
 {
     public float bulletSpeed;
+    public int bulletDamage;
 
     private GameObject player;
     private Rigidbody2D rb;
+    private float timer;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -25,6 +27,22 @@ public class EnemyBullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        timer += Time.deltaTime;
         
+        if (timer > 5) Destroy(gameObject);
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            Player player = other.gameObject.GetComponent<Player>();
+            if (player != null) player.TakeDamage(bulletDamage);
+
+            Destroy(gameObject);
+        }
+
+        else if (other.gameObject.CompareTag("Ground")) Destroy(gameObject); 
+
     }
 }
