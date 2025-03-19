@@ -1,12 +1,14 @@
 using Unity.IO.LowLevel.Unsafe;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
+using System.Collections;
+
 
 public class EnemyAI : MonoBehaviour
 {
     [Header("Stats")]
     public Transform player;
-    public float health = 100f;
+    public int health = 3;
     public float speed = 2f;
     public float detectionRange = 5f;
 
@@ -40,12 +42,12 @@ public class EnemyAI : MonoBehaviour
     public virtual void Patrol() { }
 
 
-    public virtual void Attack() { }
-    public virtual void TakeDamage(float amount)
+    public virtual void TakeDamage(int amount)
     {
+        StartCoroutine(FlashRed());
+
         health -= amount;
-        if (health <= 0)
-            Die();
+        if (health <= 0) Destroy(gameObject);
     }
 
     protected bool FlipSprite(float direction, bool isFacingRight) 
@@ -59,15 +61,19 @@ public class EnemyAI : MonoBehaviour
         }
 
         return isFacingRight;
-        
-
-
 
     }
 
-    protected void Die()
+    // briefly change sprite colour upon taking damage
+    private IEnumerator FlashRed()
     {
-        Destroy(gameObject);
+        SpriteRenderer sr = GetComponent<SpriteRenderer>();
+        if (sr != null)
+        {
+            sr.color = Color.red; // Change color to red
+            yield return new WaitForSeconds(0.2f); // Wait for 0.2 seconds
+            sr.color = Color.white; // Reset color to default (white)
+        }
     }
 
 }

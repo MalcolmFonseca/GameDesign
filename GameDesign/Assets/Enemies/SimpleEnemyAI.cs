@@ -28,11 +28,6 @@ public class SimpleEnemyAI : EnemyAI
         Move();
     }
 
-    public override void Move()
-    {
-        base.Move();
-    }
-
     public override void ChasePlayer()
     {
         Vector2 direction = (player.position - transform.position).normalized;

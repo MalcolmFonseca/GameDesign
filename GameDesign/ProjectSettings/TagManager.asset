@@ -4,11 +4,9 @@
 TagManager:
   serializedVersion: 3
   tags:
-  - Tumbleweed
   - Ground
-  - AntEnemy
-  - WaspEnemy
-  - MouseEnemy
+  - Enemy
+  - Terrain
   layers:
   - Default
   - TransparentFX

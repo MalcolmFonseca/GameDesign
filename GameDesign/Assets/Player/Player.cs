@@ -16,6 +16,7 @@ public class Player : MonoBehaviour
     private float speed = 1f;
     private Vector2 move;
     [SerializeField] private ContactFilter2D groundFilter;
+    private bool isFacingRight = true;
 
     public InputAction moveAction;
 
@@ -31,6 +32,14 @@ public class Player : MonoBehaviour
     void Update()
     {
         move = moveAction.ReadValue<Vector2>();
+
+        if ((move.x > 0 && !isFacingRight) || (move.x < 0 && isFacingRight))
+        {
+            // rotate method for flipping so bullets change direction accordingly
+            transform.Rotate(0f, 180f, 0f);
+
+            isFacingRight = !isFacingRight;
+        }
     }
 
     private void FixedUpdate()

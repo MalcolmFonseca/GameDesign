@@ -501,7 +501,7 @@ GameObject:
   - component: {fileID: 185360352}
   m_Layer: 7
   m_Name: MouseEnemy
-  m_TagString: MouseEnemy
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -681,7 +681,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1449216653}
-  health: 100
+  health: 10
   speed: 1200
   detectionRange: 15
   pathUpdateSeconds: 1
@@ -708,8 +708,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet: {fileID: 914456405562568080, guid: 7b1b3ea7e9b23e14d902a858716f975a, type: 3}
   bulletPos: {fileID: 1982273208}
-  shootCooldown: 1
-  numShots: 1
+  shootCooldown: 3
+  numShots: 3
 --- !u!1 &198417584
 GameObject:
   m_ObjectHideFlags: 0
@@ -1029,7 +1029,7 @@ GameObject:
   - component: {fileID: 371395348}
   m_Layer: 7
   m_Name: AntEnemy
-  m_TagString: AntEnemy
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1118,7 +1118,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1449216653}
-  health: 100
+  health: 3
   speed: 2
   detectionRange: 5
   patrolDistance: 4
@@ -1209,7 +1209,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet: {fileID: 3509538603126023749, guid: f143af6a4b02d5941bce1203ec5111b7, type: 3}
   bulletPos: {fileID: 1286905320}
-  shootCooldown: 2
+  shootCooldown: 1
   numShots: 1
 --- !u!1 &538844373
 GameObject:
@@ -3795,7 +3795,7 @@ GameObject:
   - component: {fileID: 815123936}
   m_Layer: 7
   m_Name: WaspEnemy
-  m_TagString: WaspEnemy
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3975,7 +3975,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1449216653}
-  health: 100
+  health: 5
   speed: 400
   detectionRange: 15
   pathUpdateSeconds: 1
@@ -4002,8 +4002,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet: {fileID: 822278582019141182, guid: e7807a737694e6b458a4ab7c8e3555c7, type: 3}
   bulletPos: {fileID: 222794345}
-  shootCooldown: 1
-  numShots: 1
+  shootCooldown: 2
+  numShots: 2
 --- !u!1 &829484610
 GameObject:
   m_ObjectHideFlags: 0
@@ -4448,7 +4448,7 @@ Transform:
   m_GameObject: {fileID: 1449216651}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 20.8, y: 6.7, z: 0}
+  m_LocalPosition: {x: -7.531, y: -2.499, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4985,6 +4985,37 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1692038632
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1692038633}
+  m_Layer: 3
+  m_Name: BulletPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1692038633
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1692038632}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.2314139, y: 0.052420326, z: 0}
+  m_LocalScale: {x: 0.9805671, y: 0.9530957, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1724361966}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1716380386
 GameObject:
   m_ObjectHideFlags: 0
@@ -5206,7 +5237,8 @@ Transform:
   m_LocalPosition: {x: -7.329, y: -2.72, z: 0}
   m_LocalScale: {x: 1.0198181, y: 1.0492126, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1692038633}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &1724361967
@@ -5276,6 +5308,8 @@ MonoBehaviour:
     m_Flags: 0
   ammoUI: {fileID: 1023554881}
   bulletPrefab: {fileID: 7304447922337180349, guid: d97135c54178d7446a40ba9f0b895087, type: 3}
+  shootingBullet: {fileID: 914456405562568080, guid: 4958b6648bae5f24fa2fa2e088fe3bb1, type: 3}
+  bulletPos: {fileID: 1692038633}
 --- !u!1 &1740179431
 GameObject:
   m_ObjectHideFlags: 0

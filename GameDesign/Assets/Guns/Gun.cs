@@ -22,6 +22,9 @@ public class Gun : MonoBehaviour
     private List<GameObject> bulletList = new List<GameObject>();
     [SerializeField] private GameObject bulletPrefab;
 
+    public GameObject shootingBullet;
+    public Transform bulletPos;
+
     void Start()
     {
         rigidbody2d = GetComponent<Rigidbody2D>();
@@ -54,6 +57,7 @@ public class Gun : MonoBehaviour
     {
         if (ammo != 0) 
         {
+            Instantiate(shootingBullet, bulletPos.position, bulletPos.rotation);
             player.Shoot(launchPower, direction.normalized);
             ammo -= 1;
             RemoveUIBullet();

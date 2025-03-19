@@ -1,16 +1,12 @@
 using UnityEngine;
 
-public class EnemyBullet : MonoBehaviour
+public class EnemyBullet : BulletBehavior
 {
-    public float bulletSpeed;
-    public int bulletDamage;
-
     private GameObject player;
     private Rigidbody2D rb;
-    private float timer;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public override void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         player = GameObject.FindGameObjectWithTag("Player");
@@ -24,15 +20,8 @@ public class EnemyBullet : MonoBehaviour
         transform.rotation = Quaternion.Euler(0, 0, rotation + 90);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        timer += Time.deltaTime;
-        
-        if (timer > 5) Destroy(gameObject);
-    }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    public override void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
@@ -42,7 +31,8 @@ public class EnemyBullet : MonoBehaviour
             Destroy(gameObject);
         }
 
-        else if (other.gameObject.CompareTag("Ground")) Destroy(gameObject); 
-
+        else if (other.gameObject.CompareTag("Ground")) Destroy(gameObject);
     }
+
 }
+
