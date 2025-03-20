@@ -64,7 +64,7 @@ public class Player : MonoBehaviour
         currentHealth -= damage;
         healthBar.SetHealth(currentHealth);
 
-        StartCoroutine(FlashRed()); // flash sprite red
+        StartCoroutine(FlashColor(Color.red)); // flash sprite red
 
 
         if (currentHealth <= 0)
@@ -85,18 +85,33 @@ public class Player : MonoBehaviour
         return rigidbody2d.IsTouching(groundFilter);
     }
 
-    // briefly change sprite colour upon taking damage
-    private IEnumerator FlashRed()
+    // briefly change sprite colour (ex. healing, damaage)
+    private IEnumerator FlashColor(Color color)
     {
         SpriteRenderer sr = GetComponent<SpriteRenderer>();
         if (sr != null)
         {
-            sr.color = Color.red; // Change color to red
+            sr.color = color; // Change color
             yield return new WaitForSeconds(0.2f); // Wait for 0.2 seconds
             sr.color = Color.white; // Reset color to default (white)
         }
     }
 
 
+    // on collision with items
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        // TODO: each health potion hardcoded to do 5 points of healing, consider dynamic assignment
+        if (collision.CompareTag("HealthPot"))
+        {
+
+            Destroy(collision.gameObject);
+            currentHealth = currentHealth + 5 <= maxHealth ? currentHealth + 5 : maxHealth;
+            healthBar.SetHealth(currentHealth);
+
+            StartCoroutine(FlashColor(Color.green)); // flash sprite green
+
+        }
+    }
 
 }
