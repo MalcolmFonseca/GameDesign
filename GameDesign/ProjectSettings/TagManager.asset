@@ -10,6 +10,7 @@ TagManager:
   - Tumbleweed
   - HealthPot
   - Ammo
+  - Gun
   layers:
   - Default
   - TransparentFX

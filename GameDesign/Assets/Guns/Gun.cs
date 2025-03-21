@@ -33,6 +33,12 @@ public class Gun : MonoBehaviour
     private float specialLaunchPower = 10f;
     private int specialAmmo = 0;
 
+    [SerializeField] private GameObject specialAmmoUI; // UI Parent for Special Ammo
+    private List<GameObject> specialBulletList = new List<GameObject>();
+
+    [SerializeField] private GameObject specialBulletPrefab; // UI Icon for Special Ammo
+
+
     public GameObject specialBullet;
 
     void Start()
@@ -52,10 +58,10 @@ public class Gun : MonoBehaviour
 
         
 
-        //instantiate ammo UI
+        //instantiate standard ammo UI
         for (int i = 0; i < ammo; i++)
         {
-            AddUIBullet();
+            AddUIBullet(bulletPrefab, ammoUI.transform, bulletList);
         }
     }
 
@@ -79,8 +85,10 @@ public class Gun : MonoBehaviour
             player.Shoot(launchPower, transform.right);
             ammoCount--;
 
-            if (canReload)
-                RemoveUIBullet();
+            // remove ammo from correct list
+            if (canReload) RemoveUIBullet(bulletList);
+
+            else RemoveUIBullet(specialBulletList);
         }
         else if (canReload && reserve > 0)
         {
@@ -99,7 +107,7 @@ public class Gun : MonoBehaviour
         bulletList.Clear();
         for (int i = 0; i < ammo; i++)
         {
-            AddUIBullet();
+            AddUIBullet(bulletPrefab, ammoUI.transform, bulletList);
         }
     }
 
@@ -107,19 +115,23 @@ public class Gun : MonoBehaviour
     {
         specialAmmo++;
         Debug.Log("SpecAmmo: " + specialAmmo);
+        AddUIBullet(specialBulletPrefab, specialAmmoUI.transform, specialBulletList);
     }
 
-    void RemoveUIBullet()
+    void AddUIBullet(GameObject bulletPrefab, Transform ammoUI, List<GameObject> bulletList)
     {
-        GameObject tempBullet = bulletList.ElementAt(bulletList.Count - 1);
-        GameObject.Destroy(tempBullet);
-        bulletList.RemoveAt(bulletList.Count - 1);
-    }
-
-    void AddUIBullet() 
-    {
-        GameObject tempBullet = Instantiate(bulletPrefab, ammoUI.transform);
+        GameObject tempBullet = Instantiate(bulletPrefab, ammoUI);
         bulletList.Add(tempBullet);
-        tempBullet.transform.position += new Vector3(10*bulletList.Count,0);
+        tempBullet.transform.position += new Vector3(15 * bulletList.Count, 0);
+    }
+
+    void RemoveUIBullet(List<GameObject> bulletList)
+    {
+        if (bulletList.Count > 0)
+        {
+            GameObject tempBullet = bulletList[bulletList.Count - 1];
+            Destroy(tempBullet);
+            bulletList.RemoveAt(bulletList.Count - 1);
+        }
     }
 }
