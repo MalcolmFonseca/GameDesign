@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 8354d3fa3c550be4fbf75fec4ff050b3
+guid: 1063c10192412dc428a86d73b4ffee54
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1310653527844959813
-    second: HealthPotion 1_0
+      213: -5565350206344527851
+    second: CollectibleAmmo_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,12 +100,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: HealthPotion 1_0
+      name: CollectibleAmmo_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 8
+        width: 12
         height: 22
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: bb940318f8f9fcde0800000000000000
-      internalID: -1310653527844959813
+      spriteID: 510003c4977e3c2b0800000000000000
+      internalID: -5565350206344527851
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      HealthPotion 1_0: -1310653527844959813
+      CollectibleAmmo_0: -5565350206344527851
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

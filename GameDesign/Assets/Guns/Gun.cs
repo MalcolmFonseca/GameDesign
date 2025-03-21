@@ -9,10 +9,13 @@ public class Gun : MonoBehaviour
     private GameObject playerObject;
     private Player player;
 
-    public InputAction shootAction;
-    Vector2 direction;
-    private float launchPower = 10f;
+    public Transform bulletPos;
 
+    [Header("Standard Ammo")]
+    public InputAction standardShootAction;
+    Vector2 direction;
+    private float standardLaunchPower = 10f;
+    
     public InputAction reloadAction;
     private int ammo = 5;
     private float reserve = Mathf.Infinity;
@@ -22,18 +25,32 @@ public class Gun : MonoBehaviour
     private List<GameObject> bulletList = new List<GameObject>();
     [SerializeField] private GameObject bulletPrefab;
 
-    public GameObject shootingBullet;
-    public Transform bulletPos;
+    public GameObject standardBullet;
+
+
+    [Header("Collectible Ammo")]
+    public InputAction specialShootAction;
+    private float specialLaunchPower = 10f;
+    private int specialAmmo = 0;
+
+    public GameObject specialBullet;
 
     void Start()
     {
         rigidbody2d = GetComponent<Rigidbody2D>();
         playerObject = GameObject.FindWithTag("Player");
         player = playerObject.GetComponent<Player>();
-        shootAction.Enable();
-        shootAction.performed += Shoot;
+
+        standardShootAction.Enable();
+        standardShootAction.performed += ctx => Shoot(standardBullet, ref ammo, standardLaunchPower, true);
+
+        specialShootAction.Enable();
+        specialShootAction.performed += ctx => Shoot(specialBullet, ref specialAmmo, specialLaunchPower, false);
+
         reloadAction.Enable();
-        reloadAction.performed += Reload;
+        reloadAction.performed += StandardReload;
+
+        
 
         //instantiate ammo UI
         for (int i = 0; i < ammo; i++)
@@ -53,21 +70,26 @@ public class Gun : MonoBehaviour
         transform.right = direction;
     }
 
-    void Shoot(InputAction.CallbackContext context)
+    // Merged Shoot function for standard and special bullets
+    void Shoot(GameObject bulletPrefab, ref int ammoCount, float launchPower, bool canReload)
     {
-        if (ammo != 0) 
+        if (ammoCount > 0)
         {
-            Instantiate(shootingBullet, bulletPos.position, bulletPos.rotation);
-            player.Shoot(launchPower, direction.normalized);
-            ammo -= 1;
-            RemoveUIBullet();
-        } else if (reserve > 0)
+            Instantiate(bulletPrefab, bulletPos.position, bulletPos.rotation);
+            player.Shoot(launchPower, transform.right);
+            ammoCount--;
+
+            if (canReload)
+                RemoveUIBullet();
+        }
+        else if (canReload && reserve > 0)
         {
-            Reload(context);
+            StandardReload(new InputAction.CallbackContext());
         }
     }
 
-    void Reload(InputAction.CallbackContext context) 
+
+    void StandardReload(InputAction.CallbackContext context) 
     {
         int neededBullets = magSize - ammo;
         reserve -= neededBullets;
@@ -79,6 +101,12 @@ public class Gun : MonoBehaviour
         {
             AddUIBullet();
         }
+    }
+
+    public void SpecialReload()
+    {
+        specialAmmo++;
+        Debug.Log("SpecAmmo: " + specialAmmo);
     }
 
     void RemoveUIBullet()

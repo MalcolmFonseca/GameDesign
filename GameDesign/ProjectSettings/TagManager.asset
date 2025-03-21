@@ -9,6 +9,7 @@ TagManager:
   - Terrain
   - Tumbleweed
   - HealthPot
+  - Ammo
   layers:
   - Default
   - TransparentFX

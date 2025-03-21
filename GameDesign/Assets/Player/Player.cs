@@ -20,6 +20,8 @@ public class Player : MonoBehaviour
 
     public InputAction moveAction;
 
+    private Gun gun;
+
     void Start()
     {
         moveAction.Enable();
@@ -27,6 +29,8 @@ public class Player : MonoBehaviour
 
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
+
+        gun = GetComponentInChildren<Gun>();
     }
 
     void Update()
@@ -110,6 +114,15 @@ public class Player : MonoBehaviour
             healthBar.SetHealth(currentHealth);
 
             StartCoroutine(FlashColor(Color.green)); // flash sprite green
+
+        }
+
+        if (collision.CompareTag("Ammo"))
+        {
+
+            Destroy(collision.gameObject);
+
+            if (gun != null) gun.SpecialReload();
 
         }
     }
