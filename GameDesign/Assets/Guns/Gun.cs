@@ -30,7 +30,7 @@ public class Gun : MonoBehaviour
 
     [Header("Collectible Ammo")]
     public InputAction specialShootAction;
-    private float specialLaunchPower = 10f;
+    private float specialLaunchPower = 20f;
     private int specialAmmo = 0;
 
     [SerializeField] private GameObject specialAmmoUI; // UI Parent for Special Ammo
