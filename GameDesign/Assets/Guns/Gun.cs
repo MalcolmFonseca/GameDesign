@@ -1,5 +1,6 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -24,6 +25,7 @@ public class Gun : MonoBehaviour
     [SerializeField] private GameObject ammoUI;
     private List<GameObject> bulletList = new List<GameObject>();
     [SerializeField] private GameObject bulletPrefab;
+    [SerializeField] private GameObject reserveTextObject;
 
     public GameObject standardBullet;
 
@@ -38,8 +40,11 @@ public class Gun : MonoBehaviour
 
     [SerializeField] private GameObject specialBulletPrefab; // UI Icon for Special Ammo
 
-
     public GameObject specialBullet;
+
+    [SerializeField] private GameObject specialReserveTextObject;
+
+    private List<GunUpgrade> upgrades = new List<GunUpgrade>();
 
     void Start()
     {
@@ -79,21 +84,21 @@ public class Gun : MonoBehaviour
     // Merged Shoot function for standard and special bullets
     void Shoot(GameObject bulletPrefab, ref int ammoCount, float launchPower, bool canReload)
     {
-        if (ammoCount > 0)
-        {
-            Instantiate(bulletPrefab, bulletPos.position, bulletPos.rotation);
-            player.Shoot(launchPower, transform.right);
-            ammoCount--;
+            if (ammoCount > 0)
+            {
+                Instantiate(bulletPrefab, bulletPos.position, bulletPos.rotation);
+                player.Shoot(launchPower, transform.right);
+                ammoCount--;
 
-            // remove ammo from correct list
-            if (canReload) RemoveUIBullet(bulletList);
+                // remove ammo from correct list
+                if (canReload) RemoveUIBullet(bulletList);
 
-            else RemoveUIBullet(specialBulletList);
-        }
-        else if (canReload && reserve > 0)
-        {
-            StandardReload(new InputAction.CallbackContext());
-        }
+                else RemoveUIBullet(specialBulletList);
+            }
+            else if (canReload && reserve > 0)
+            {
+                StandardReload(new InputAction.CallbackContext());
+            }
     }
 
 
@@ -109,6 +114,17 @@ public class Gun : MonoBehaviour
         {
             AddUIBullet(bulletPrefab, ammoUI.transform, bulletList);
         }
+        
+        TMP_Text reserveText = reserveTextObject.GetComponent<TMP_Text>();
+        if (reserve == Mathf.Infinity)
+        {
+            reserveText.text = "∞";
+        } else
+        {
+            reserveText.text = reserve.ToString();
+        }
+        GameObject lastBullet = bulletList.Last();
+        reserveTextObject.transform.position = new Vector3(lastBullet.transform.position.x + 40, lastBullet.transform.position.y - 15);
     }
 
     public void SpecialReload()
@@ -122,7 +138,7 @@ public class Gun : MonoBehaviour
     {
         GameObject tempBullet = Instantiate(bulletPrefab, ammoUI);
         bulletList.Add(tempBullet);
-        tempBullet.transform.position += new Vector3(15 * bulletList.Count, 0);
+        tempBullet.transform.position += new Vector3(15 * bulletList.Count, -30);
     }
 
     void RemoveUIBullet(List<GameObject> bulletList)
@@ -133,5 +149,21 @@ public class Gun : MonoBehaviour
             Destroy(tempBullet);
             bulletList.RemoveAt(bulletList.Count - 1);
         }
+    }
+
+    public void attachUpgrade(GunUpgrade upgrade)
+    {
+        upgrades.Add(upgrade);
+        //add all modifiers, will need to be added to when new upgrades are added in future versions
+        magSize += upgrade.magSizeMod;
+        standardLaunchPower += upgrade.launchPowerMod;
+    }
+
+    public void removeUpgrade(GunUpgrade upgrade)
+    {
+        upgrades.Remove(upgrade);
+        //remove all modifiers, will need to be added to when new upgrades are added in future versions
+        magSize -= upgrade.magSizeMod;
+        standardLaunchPower -= upgrade.launchPowerMod;
     }
 }
