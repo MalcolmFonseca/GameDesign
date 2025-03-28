@@ -54,14 +54,34 @@ public class SimpleEnemyAI : EnemyAI
         isFacingRight = FlipSprite(direction.x, isFacingRight);
 
     }
-    private void OnDrawGizmos()
+
+    private void OnDrawGizmosSelected()
     {
-        Gizmos.color = Color.green;
-        Gizmos.DrawWireSphere(pointA, 0.5f);
-        Gizmos.DrawWireSphere(pointB, 0.5f);
-        Gizmos.DrawLine(pointA, pointB);
+        if (Application.isPlaying) // Ensure points are initialized
+        {
+            Gizmos.color = Color.green;
+            Gizmos.DrawWireSphere(pointA, 0.5f);
+            Gizmos.DrawWireSphere(pointB, 0.5f);
+            Gizmos.DrawLine(pointA, pointB);
+        }
 
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, detectionRange); // Visualize detection radius
+        Gizmos.DrawWireSphere(transform.position, detectionRange);
     }
+
+    //private void OnDrawGizmos()
+    //{
+    //    Vector2 tempPointA = transform.position - new Vector3(patrolDistance, 0, 0);
+    //    Vector2 tempPointB = transform.position + new Vector3(patrolDistance, 0, 0);
+
+    //    Gizmos.color = Color.green;
+    //    Gizmos.DrawWireSphere(tempPointA, 0.5f);
+    //    Gizmos.DrawWireSphere(tempPointB, 0.5f);
+    //    Gizmos.DrawLine(tempPointA, tempPointB);
+
+    //    Gizmos.color = Color.red;
+    //    Gizmos.DrawWireSphere(transform.position, detectionRange);
+    //}
+
+
 }
