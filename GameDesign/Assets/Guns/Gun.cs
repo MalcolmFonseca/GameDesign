@@ -42,8 +42,6 @@ public class Gun : MonoBehaviour
 
     public GameObject specialBullet;
 
-    [SerializeField] private GameObject specialReserveTextObject;
-
     private List<GunUpgrade> upgrades = new List<GunUpgrade>();
 
     void Start()
@@ -68,6 +66,8 @@ public class Gun : MonoBehaviour
         {
             AddUIBullet(bulletPrefab, ammoUI.transform, bulletList);
         }
+
+        UpdateText();
     }
 
     void Update()
@@ -114,17 +114,8 @@ public class Gun : MonoBehaviour
         {
             AddUIBullet(bulletPrefab, ammoUI.transform, bulletList);
         }
-        
-        TMP_Text reserveText = reserveTextObject.GetComponent<TMP_Text>();
-        if (reserve == Mathf.Infinity)
-        {
-            reserveText.text = "∞";
-        } else
-        {
-            reserveText.text = reserve.ToString();
-        }
-        GameObject lastBullet = bulletList.Last();
-        reserveTextObject.transform.position = new Vector3(lastBullet.transform.position.x + 40, lastBullet.transform.position.y - 15);
+
+        UpdateText();
     }
 
     public void SpecialReload()
@@ -165,5 +156,20 @@ public class Gun : MonoBehaviour
         //remove all modifiers, will need to be added to when new upgrades are added in future versions
         magSize -= upgrade.magSizeMod;
         standardLaunchPower -= upgrade.launchPowerMod;
+    }
+
+    private void UpdateText()
+    {
+        TMP_Text reserveText = reserveTextObject.GetComponent<TMP_Text>();
+        if (reserve == Mathf.Infinity)
+        {
+            reserveText.text = "∞";
+        }
+        else
+        {
+            reserveText.text = reserve.ToString();
+        }
+        GameObject lastBullet = bulletList.Last();
+        reserveTextObject.transform.position = new Vector3(lastBullet.transform.position.x + 20, lastBullet.transform.position.y - 15);
     }
 }
