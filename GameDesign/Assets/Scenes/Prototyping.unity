@@ -141372,6 +141372,7 @@ MonoBehaviour:
       m_Action: Move
       m_Flags: 8
     m_Flags: 0
+  respawnPoint: {x: -83.4, y: -12.27, z: 0}
 --- !u!1001 &1464185510
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -143268,7 +143269,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 90.7, y: -22.3}
+  m_AnchoredPosition: {x: 90.69998, y: -22.300003}
   m_SizeDelta: {x: 130.343, y: 15.5052}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1716380388
@@ -144613,8 +144614,8 @@ Camera:
   m_GameObject: {fileID: 1859324834}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0.37254903, g: 0.13725491, b: 0.27450982, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0

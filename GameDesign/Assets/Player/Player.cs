@@ -22,6 +22,8 @@ public class Player : MonoBehaviour
 
     private Gun gun;
 
+    public Vector3 respawnPoint;
+
     void Start()
     {
         moveAction.Enable();
@@ -73,7 +75,7 @@ public class Player : MonoBehaviour
 
         if (currentHealth <= 0)
         {
-            Destroy(gameObject);
+            Respawn();
         }
     }
 
@@ -127,4 +129,10 @@ public class Player : MonoBehaviour
         }
     }
 
+
+    private void Respawn()
+    {
+        healthBar.SetHealth(maxHealth);
+        transform.position = respawnPoint;
+    }
 }

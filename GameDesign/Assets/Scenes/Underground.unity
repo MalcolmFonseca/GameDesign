@@ -1705,6 +1705,7 @@ MonoBehaviour:
       m_Action: Move
       m_Flags: 8
     m_Flags: 0
+  respawnPoint: {x: 131.01, y: 11.12, z: 0}
 --- !u!1 &1545060731
 GameObject:
   m_ObjectHideFlags: 0
