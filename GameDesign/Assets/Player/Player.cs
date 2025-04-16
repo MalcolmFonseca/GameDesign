@@ -135,7 +135,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void Respawn()
+    public void Respawn()
     {
         healthBar.SetHealth(maxHealth);
         transform.position = respawnPoint;
