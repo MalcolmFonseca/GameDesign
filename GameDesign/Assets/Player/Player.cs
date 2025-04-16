@@ -19,6 +19,7 @@ public class Player : MonoBehaviour
     private bool isFacingRight = true;
 
     public InputAction moveAction;
+    public InputAction jumpAction;
 
     private Gun gun;
 
@@ -27,6 +28,8 @@ public class Player : MonoBehaviour
     void Start()
     {
         moveAction.Enable();
+        jumpAction.Enable();
+        jumpAction.performed += Jump;
         rigidbody2d = GetComponent<Rigidbody2D>();
 
         currentHealth = maxHealth;
@@ -82,11 +85,14 @@ public class Player : MonoBehaviour
 
     public void Shoot(float launchPower, Vector2 direction)
     {
-        rigidbody2d.linearVelocity = new Vector2(-direction.x * launchPower, -direction.y * launchPower);
+        if (!Grounded())
+        {
+            rigidbody2d.linearVelocity = new Vector2(-direction.x * launchPower, -direction.y * launchPower);
+        }
     }
 
     //check if on ground
-    private bool Grounded()
+    public bool Grounded()
     {
         return rigidbody2d.IsTouching(groundFilter);
     }
@@ -129,10 +135,17 @@ public class Player : MonoBehaviour
         }
     }
 
-
     private void Respawn()
     {
         healthBar.SetHealth(maxHealth);
         transform.position = respawnPoint;
+    }
+
+    private void Jump(InputAction.CallbackContext context)
+    {
+        if (Grounded())
+        {
+            rigidbody2d.linearVelocity = new Vector2(rigidbody2d.linearVelocityX, 10);
+        }
     }
 }

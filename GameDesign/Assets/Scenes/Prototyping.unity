@@ -141372,6 +141372,23 @@ MonoBehaviour:
       m_Action: Move
       m_Flags: 8
     m_Flags: 0
+  jumpAction:
+    m_Name: Jump
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 1b333dd1-91f6-4d5d-9017-a82c8dc764ea
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 06ac50b8-135a-4006-9546-1671c82a5b9a
+      m_Path: <Keyboard>/space
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Jump
+      m_Flags: 0
+    m_Flags: 0
   respawnPoint: {x: -83.4, y: -12.27, z: 0}
 --- !u!1001 &1464185510
 PrefabInstance:

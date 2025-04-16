@@ -104,18 +104,21 @@ public class Gun : MonoBehaviour
 
     void StandardReload(InputAction.CallbackContext context) 
     {
-        int neededBullets = magSize - ammo;
-        reserve -= neededBullets;
-        ammo = magSize;
-
-        //update ui
-        bulletList.Clear();
-        for (int i = 0; i < ammo; i++)
+        if (player.Grounded())
         {
-            AddUIBullet(bulletPrefab, ammoUI.transform, bulletList);
-        }
+            int neededBullets = magSize - ammo;
+            reserve -= neededBullets;
+            ammo = magSize;
 
-        UpdateText();
+            //update ui
+            bulletList.Clear();
+            for (int i = 0; i < ammo; i++)
+            {
+                AddUIBullet(bulletPrefab, ammoUI.transform, bulletList);
+            }
+
+            UpdateText();
+        }
     }
 
     public void SpecialReload()
