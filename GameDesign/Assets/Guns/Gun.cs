@@ -79,6 +79,19 @@ public class Gun : MonoBehaviour
         mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
         direction = new Vector2(mousePosition.x - transform.position.x, mousePosition.y - transform.position.y);
         transform.right = direction;
+
+        //check if paused
+        if (player.paused == true)
+        {
+            standardShootAction.Disable();
+            reloadAction.Disable();
+            specialShootAction.Disable();
+        } else if (player.paused == false)
+        {
+            standardShootAction.Enable();
+            reloadAction.Enable();
+            specialShootAction.Enable();
+        }
     }
 
     // Merged Shoot function for standard and special bullets

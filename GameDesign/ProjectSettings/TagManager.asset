@@ -11,6 +11,7 @@ TagManager:
   - HealthPot
   - Ammo
   - Gun
+  - PausedUI
   layers:
   - Default
   - TransparentFX

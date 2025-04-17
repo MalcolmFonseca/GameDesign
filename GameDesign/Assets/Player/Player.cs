@@ -2,7 +2,9 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering;
-using System.Collections; 
+using System.Collections;
+using TMPro;
+using UnityEngine.UI;
 
 
 public class Player : MonoBehaviour
@@ -20,6 +22,12 @@ public class Player : MonoBehaviour
 
     public InputAction moveAction;
     public InputAction jumpAction;
+    public InputAction pauseAction;
+
+    public bool paused = false;
+    private GameObject pausedUIObject;
+    private TMP_Text pausedText;
+    private Button exitButton;
 
     private Gun gun;
 
@@ -30,12 +38,18 @@ public class Player : MonoBehaviour
         moveAction.Enable();
         jumpAction.Enable();
         jumpAction.performed += Jump;
+        pauseAction.Enable();
+        pauseAction.performed += Pause;
         rigidbody2d = GetComponent<Rigidbody2D>();
 
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
 
         gun = GetComponentInChildren<Gun>();
+
+        pausedUIObject = GameObject.FindGameObjectWithTag("PausedUI");
+        pausedText = pausedUIObject.GetComponentInChildren<TMP_Text>();
+        exitButton = pausedUIObject.GetComponentInChildren<Button>();
     }
 
     void Update()
@@ -146,6 +160,28 @@ public class Player : MonoBehaviour
         if (Grounded())
         {
             rigidbody2d.linearVelocity = new Vector2(rigidbody2d.linearVelocityX, 10);
+        }
+    }
+
+    //Attaching pause to character for ease
+    private void Pause(InputAction.CallbackContext context)
+    {
+        if (!paused)
+        {
+            pausedText.SetText("Paused");
+            exitButton.transform.localScale = new Vector3(1, 1, 1);
+            Time.timeScale = 0;
+            paused = true;
+            moveAction.Disable();
+            jumpAction.Disable();
+        } else
+        {
+            pausedText.SetText("");
+            exitButton.transform.localScale = new Vector3(0, 0, 0);
+            Time.timeScale = 1;
+            paused = false;
+            moveAction.Enable();
+            jumpAction.Enable();
         }
     }
 }
