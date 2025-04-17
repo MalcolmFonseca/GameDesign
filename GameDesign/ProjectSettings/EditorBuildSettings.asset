@@ -9,8 +9,17 @@ EditorBuildSettings:
     path: Assets/Scenes/SampleScene.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
   - enabled: 1
+    path: Assets/Scenes/HomeScreen.unity
+    guid: 732a392f57b89b641980a3e105625514
+  - enabled: 1
     path: Assets/Scenes/Prototyping.unity
     guid: 7f15ef56bf55d65489f0322eea533688
+  - enabled: 1
+    path: Assets/Scenes/Underground.unity
+    guid: 9e2236e27d48b8d4fbec53ccbf823d29
+  - enabled: 1
+    path: Assets/Scenes/BossFight.unity
+    guid: f824ac3bacf01144a8dfc4ac40158a57
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

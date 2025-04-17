@@ -12,6 +12,7 @@ TagManager:
   - Ammo
   - Gun
   - PausedUI
+  - UI
   layers:
   - Default
   - TransparentFX
