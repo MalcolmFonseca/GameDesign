@@ -18,12 +18,18 @@ public class PlayerBullet : BulletBehavior
 
     public override void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Enemy"))
+        if (other.TryGetComponent<EnemyAI>(out var enemy))
         {
-            EnemyAI enemy = other.gameObject.GetComponent<EnemyAI>();
-            if (enemy != null) enemy.TakeDamage(bulletDamage);
-
+            enemy.TakeDamage(bulletDamage);
             Destroy(gameObject);
+            return;
+        }
+
+        if (other.TryGetComponent<CrowBossAI>(out var boss))
+        {
+            boss.TakeDamage(bulletDamage);
+            Destroy(gameObject);
+            return;
         }
 
         else if (other.gameObject.CompareTag("Ground")) Destroy(gameObject);
