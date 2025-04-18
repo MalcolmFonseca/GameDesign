@@ -5,6 +5,11 @@ public class CrowBossAI : MonoBehaviour
 {
     [Header("References")]
     public Transform player;
+    public AudioSource audioSource;
+    public AudioClip[] flapSounds;
+    public AudioClip cawSound;
+    public float flapInterval = 1f;
+    private float flapTimer;
 
     [Header("Stats")]
     public int health = 5;
@@ -22,7 +27,7 @@ public class CrowBossAI : MonoBehaviour
     public float windupTime = 0.5f;
     public float diveDuration = 1f;
     public float diveCooldown = 3f;
-    public int contactDamage = 1;
+    public int contactDamage = 3;
 
     [Header("Bounds (world‑space)")]
     public Vector2 minBounds;   // bottom‑left corner of the cave
@@ -81,6 +86,17 @@ public class CrowBossAI : MonoBehaviour
 
         if (Vector2.Distance(transform.position, roamTarget) < 0.5f)
             PickNewRoamPoint();
+
+        flapTimer += Time.deltaTime;
+        if (flapTimer >= flapInterval)
+        {
+            flapTimer -= flapInterval;
+            if (flapSounds.Length > 0 && audioSource != null)
+            {
+                int i = Random.Range(0, flapSounds.Length);
+                audioSource.PlayOneShot(flapSounds[i]);
+            }
+        }
     }
 
     IEnumerator DiveAtPlayer()
@@ -90,6 +106,7 @@ public class CrowBossAI : MonoBehaviour
 
         // wind‑up pause
         rb.linearVelocity = Vector2.zero;
+        audioSource.PlayOneShot(cawSound);
         yield return new WaitForSeconds(windupTime);
 
         // dive phase
