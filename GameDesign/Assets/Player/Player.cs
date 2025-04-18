@@ -5,6 +5,7 @@ using UnityEngine.Rendering;
 using System.Collections;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 
 public class Player : MonoBehaviour
@@ -152,6 +153,27 @@ public class Player : MonoBehaviour
     public void Respawn()
     {
         healthBar.SetHealth(maxHealth);
+        
+        string sceneName = SceneManager.GetActiveScene().name;
+
+        if (sceneName == "Prototyping")
+        {
+        respawnPoint = new Vector3(-83.4000015,-12.2700005,0);
+        }
+        else if (sceneName == "Underground")
+        {
+        respawnPoint = new Vector3(131.009995,11.1199999,0); 
+        }
+        else if (sceneName == "BossFight")
+        {
+        respawnPoint = new Vector3(75.8000031,-28.7000008,0);
+        }
+        else
+        {
+        respawnPoint = new Vector2(0f, 0f); //default
+        }
+
+        
         transform.position = respawnPoint;
     }
 
