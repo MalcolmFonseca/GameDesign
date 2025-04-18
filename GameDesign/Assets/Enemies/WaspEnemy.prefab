@@ -197,9 +197,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  health: 5
+  health: 15
   speed: 400
   detectionRange: 15
+  droppedNote: {fileID: 0}
   pathUpdateSeconds: 1
   nextWaypointDistance: 3
   oscillationAmplitude: 2

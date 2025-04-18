@@ -60,7 +60,7 @@ public class Gun : MonoBehaviour
         standardShootAction.performed += ctx => Shoot(standardBullet, ref ammo, standardLaunchPower, true);
 
         specialShootAction.Enable();
-        specialShootAction.performed += ctx => Shoot(specialBullet, ref specialAmmo, specialLaunchPower, false);
+        specialShootAction.performed += ctx => Shoot(specialBullet, ref specialAmmo, standardLaunchPower + 10f, false);
 
         reloadAction.Enable();
         reloadAction.performed += StandardReload;

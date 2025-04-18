@@ -178,9 +178,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  health: 3
+  health: 5
   speed: 2
   detectionRange: 5
+  droppedNote: {fileID: 0}
   patrolDistance: 4
 --- !u!114 &2593771502258326307
 MonoBehaviour:

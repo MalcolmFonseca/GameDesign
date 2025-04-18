@@ -45,10 +45,13 @@ public class EnemyAI : MonoBehaviour
         StartCoroutine(FlashRed());
 
         health -= amount;
-        if (health <= 0) Destroy(gameObject);
+        if (health <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
 
-    protected bool FlipSprite(float direction, bool isFacingRight) 
+    protected bool FlipSprite(float direction, bool isFacingRight)
     {
         if ((direction > 0 && !isFacingRight) || (direction < 0 && isFacingRight))
         {
@@ -59,7 +62,6 @@ public class EnemyAI : MonoBehaviour
         }
 
         return isFacingRight;
-
     }
 
     // briefly change sprite colour upon taking damage

@@ -7,7 +7,6 @@ using TMPro;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-
 public class Player : MonoBehaviour
 {
     public int maxHealth = 20;
@@ -34,8 +33,22 @@ public class Player : MonoBehaviour
 
     public Vector3 respawnPoint;
 
+    //make singleton
+    void Awake()
+    {
+        GameObject[] player = GameObject.FindGameObjectsWithTag("Player");
+
+        if (player.Length > 1)
+        {
+            Destroy(this.gameObject);
+        }
+
+        DontDestroyOnLoad(this.gameObject);
+    }
+
     void Start()
     {
+        Respawn();
         moveAction.Enable();
         jumpAction.Enable();
         jumpAction.performed += Jump;
@@ -158,15 +171,15 @@ public class Player : MonoBehaviour
 
         if (sceneName == "Prototyping")
         {
-        respawnPoint = new Vector3(-83.4000015,-12.2700005,0);
+        respawnPoint = new Vector3(-83.4000015f,-12.2700005f,0);
         }
         else if (sceneName == "Underground")
         {
-        respawnPoint = new Vector3(131.009995,11.1199999,0); 
+        respawnPoint = new Vector3(131.009995f,11.1199999f,0); 
         }
         else if (sceneName == "BossFight")
         {
-        respawnPoint = new Vector3(75.8000031,-28.7000008,0);
+        respawnPoint = new Vector3(75.8000031f,-28.7000008f,0);
         }
         else
         {
