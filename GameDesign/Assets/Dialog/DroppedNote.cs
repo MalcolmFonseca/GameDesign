@@ -15,8 +15,11 @@ public class DroppedNote : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        GameObject dialogue = Instantiate(dialoguePrefab, UI.transform);
-        dialogue.GetComponent<Dialogue>().lines = lines;
-        Destroy(gameObject);
+        if (collision.CompareTag("Player"))
+        {
+            GameObject dialogue = Instantiate(dialoguePrefab, UI.transform);
+            dialogue.GetComponent<Dialogue>().lines = lines;
+            Destroy(gameObject);
+        }
     }
 }

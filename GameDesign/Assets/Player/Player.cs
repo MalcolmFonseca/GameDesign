@@ -171,6 +171,7 @@ public class Player : MonoBehaviour
         pausedText = pausedUIObject.GetComponentInChildren<TMP_Text>();
         exitButton = pausedUIObject.GetComponentInChildren<Button>();
 
+        currentHealth = maxHealth;
         healthBar.SetHealth(maxHealth);
         
         string sceneName = SceneManager.GetActiveScene().name;

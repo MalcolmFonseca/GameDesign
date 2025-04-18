@@ -181,7 +181,7 @@ MonoBehaviour:
   health: 5
   speed: 2
   detectionRange: 5
-  droppedNote: {fileID: 0}
+  droppedNote: {fileID: 924485518178817156, guid: 8ef43766973eb174ba3c1c05f32883e0, type: 3}
   patrolDistance: 4
 --- !u!114 &2593771502258326307
 MonoBehaviour:

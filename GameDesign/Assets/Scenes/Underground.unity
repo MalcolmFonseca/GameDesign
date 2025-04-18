@@ -3480,6 +3480,28 @@ PrefabInstance:
       propertyPath: detectionRange
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 7593992956566385741, guid: 7c1626c0be4176940abedc4e30659517, type: 3}
+      propertyPath: lines.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7593992956566385741, guid: 7c1626c0be4176940abedc4e30659517, type: 3}
+      propertyPath: droppedNotePrefab
+      value: 
+      objectReference: {fileID: 924485518178817156, guid: 8ef43766973eb174ba3c1c05f32883e0, type: 3}
+    - target: {fileID: 7593992956566385741, guid: 7c1626c0be4176940abedc4e30659517, type: 3}
+      propertyPath: 'lines.Array.data[0]'
+      value: "Hey Mylo, The sun\u2019s got a mean streak lately\u2014half our youngest
+        are sleeping in burrow shade until noon. I told Brietta she\u2019d grow into
+        her ears, but she still insists on dragging a cloth canopy with her wherever
+        she goes. I think she\u2019s trying to look noble. Say, how\u2019s your second
+        eldest doing? Last I heard, Miri was eyeing that caved-in vending machine
+        town for her solo run. Stars above\u2014doesn\u2019t that place have crows?
+        If she goes, make sure she packs proper salt chips, none of those flaky beet-wafers.
+        And remember: no daughter of ours should face the world without at least
+        one collapsible spoon. Let\u2019s meet under the rusted billboard by Redfang
+        Gulch in six days' time. Bring stories and that pepperroot salve I like.
+        \u2013 Your favorite brother,  Thatch"
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6179,6 +6201,24 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 7593992956566385741, guid: 7c1626c0be4176940abedc4e30659517, type: 3}
+      propertyPath: lines.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7593992956566385741, guid: 7c1626c0be4176940abedc4e30659517, type: 3}
+      propertyPath: droppedNotePrefab
+      value: 
+      objectReference: {fileID: 924485518178817156, guid: 8ef43766973eb174ba3c1c05f32883e0, type: 3}
+    - target: {fileID: 7593992956566385741, guid: 7c1626c0be4176940abedc4e30659517, type: 3}
+      propertyPath: 'lines.Array.data[0]'
+      value: "\"Reminder to self (and to Rae if she\u2019s reading this): Miri leaves
+        in three moons. She wants to take the family compass, but I\u2019m thinking
+        of giving her your grandmother\u2019s knife instead. She says she doesn\u2019t
+        need protection. I say: it\u2019s not about needing\u2014it\u2019s about
+        carrying something that remembers you. I worry. I can\u2019t help it. Maybe
+        she\u2019ll find that vending ruin Thatch always joked about. Maybe she\u2019ll
+        tame a crow (gods forbid). I just hope she remembers to write.\" \u2013 Dad "
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6821,6 +6861,25 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 7593992956566385741, guid: 7c1626c0be4176940abedc4e30659517, type: 3}
+      propertyPath: lines.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7593992956566385741, guid: 7c1626c0be4176940abedc4e30659517, type: 3}
+      propertyPath: droppedNotePrefab
+      value: 
+      objectReference: {fileID: 924485518178817156, guid: 8ef43766973eb174ba3c1c05f32883e0, type: 3}
+    - target: {fileID: 7593992956566385741, guid: 7c1626c0be4176940abedc4e30659517, type: 3}
+      propertyPath: 'lines.Array.data[0]'
+      value: "Thatch, We found a music chip in an old carcass case\u2014still works
+        despite the scratches! Rae says it\u2019s human opera, but it sounds more
+        like a crow getting its tail stepped on. Still, we\u2019ve been playing it
+        at night. Makes the little ones fall asleep quicker, stars know why. How\u2019s
+        your side of the sand? Any good tech finds? Oh\u2014and tell Brietta that
+        Miri says if she really wants to look noble, she should wear two capes and
+        refuse to blink. Works every time. We\u2019ll be at the Ridge Edge crossing
+        next half-moon. Bring something strange. \u2013 M. "
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6968,6 +7027,24 @@ PrefabInstance:
     - target: {fileID: 7593992956566385741, guid: 7c1626c0be4176940abedc4e30659517, type: 3}
       propertyPath: player
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7593992956566385741, guid: 7c1626c0be4176940abedc4e30659517, type: 3}
+      propertyPath: lines.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7593992956566385741, guid: 7c1626c0be4176940abedc4e30659517, type: 3}
+      propertyPath: droppedNotePrefab
+      value: 
+      objectReference: {fileID: 924485518178817156, guid: 8ef43766973eb174ba3c1c05f32883e0, type: 3}
+    - target: {fileID: 7593992956566385741, guid: 7c1626c0be4176940abedc4e30659517, type: 3}
+      propertyPath: 'lines.Array.data[0]'
+      value: "Brother, I dreamt of the old drainpipe trails again. Remember how we\u2019d
+        race beetle shells down the edge and swear whoever lost had to eat worm stew?
+        I miss that. The kids don\u2019t play like we used to. They\u2019re sharper
+        now. Quieter. Maybe it\u2019s the heat, maybe the weight of things. When
+        this season\u2019s foraging ends, let\u2019s find a patch of silence together\u2014just
+        you, me, and a deck of scavenged playing cards. No lessons. No plans. Just
+        air. Tell no one. Especially your loudest child. \u2013 T. "
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7759,6 +7836,29 @@ PrefabInstance:
     - target: {fileID: 7593992956566385741, guid: 7c1626c0be4176940abedc4e30659517, type: 3}
       propertyPath: player
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7593992956566385741, guid: 7c1626c0be4176940abedc4e30659517, type: 3}
+      propertyPath: lines.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7593992956566385741, guid: 7c1626c0be4176940abedc4e30659517, type: 3}
+      propertyPath: droppedNotePrefab
+      value: 
+      objectReference: {fileID: 924485518178817156, guid: 8ef43766973eb174ba3c1c05f32883e0, type: 3}
+    - target: {fileID: 7593992956566385741, guid: 7c1626c0be4176940abedc4e30659517, type: 3}
+      propertyPath: 'lines.Array.data[0]'
+      value: "Thatch, You\u2019re a worry-mouse through and through. Miri\u2019s
+        not heading out just yet, though she\u2019s been mapping her own path to
+        Trader\u2019s Spine and asking way too many questions about firearm safety.
+        She even sewed her own ammo pouch\u2014used bark leather and everything.
+        She gets that from Rae, even though her stitching\u2019s not quite up to
+        par yet (though don\u2019t tell her I said that). We\u2019ll swing by the
+        billboard, but only if you bring the rootcakes, you\u2019ve been eating me
+        out of house and home for too long! And if Brietta wants to swap stories
+        with her cousin, tell her Miri\u2019s been keeping notes in a tin lunchbox.
+        Could be a good trade. P.S. We\u2019ve got a new tunnel-pup\u2014big ears,
+        sharper tail than sense. I\u2019ll trade him for two jars of your spice-pickled
+        beetle. \u2013 Mylo "
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

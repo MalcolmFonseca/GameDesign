@@ -1,5 +1,7 @@
 using UnityEngine;
 using System.Collections;
+using System.Linq;
+using UnityEngine.InputSystem;
 
 
 public class EnemyAI : MonoBehaviour
@@ -10,7 +12,8 @@ public class EnemyAI : MonoBehaviour
     public float speed = 2f;
     public float detectionRange = 5f;
 
-    public GameObject droppedNote;
+    public GameObject droppedNotePrefab;
+    public string[] lines;
     
     protected EnemyShooting enemyShooting;
 
@@ -52,6 +55,12 @@ public class EnemyAI : MonoBehaviour
         health -= amount;
         if (health <= 0)
         {
+            if (droppedNotePrefab != null)
+            {
+                GameObject droppedNote = Instantiate(droppedNotePrefab);
+                droppedNote.GetComponent<DroppedNote>().lines = lines;
+                droppedNote.transform.position = transform.position;
+            }
             Destroy(gameObject);
         }
     }
@@ -83,9 +92,9 @@ public class EnemyAI : MonoBehaviour
 
     private void OnDestroy()
     {
-        if (droppedNote != null)
+        if (droppedNotePrefab != null)
         {
-            Instantiate(droppedNote);
+            Instantiate(droppedNotePrefab);
         }
     }
 }
