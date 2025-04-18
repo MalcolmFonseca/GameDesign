@@ -149,3 +149,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   magSizeMod: 3
   launchPowerMod: 1
+  damageMod: 0
+  upgradeTextPrefab: {fileID: 6996040063724423671, guid: 7029a76a2dde0ba428f116d1c3dc8ce7, type: 3}

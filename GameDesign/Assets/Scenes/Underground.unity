@@ -6173,6 +6173,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1023554881}
     - target: {fileID: 2512865161795639494, guid: d5efedfeb30084245b1852a26290c8af, type: 3}
+      propertyPath: bulletDamage
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512865161795639494, guid: d5efedfeb30084245b1852a26290c8af, type: 3}
       propertyPath: specialAmmoUI
       value: 
       objectReference: {fileID: 635419172}
@@ -8285,8 +8289,8 @@ Camera:
   m_GameObject: {fileID: 1859324834}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0.13725491, g: 0.2392157, b: 0.3529412, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0

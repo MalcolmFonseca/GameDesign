@@ -10,7 +10,7 @@ public class EnemyAI : MonoBehaviour
     public float speed = 2f;
     public float detectionRange = 5f;
 
-
+    public GameObject droppedNote;
     
     protected EnemyShooting enemyShooting;
 
@@ -74,4 +74,11 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
+    private void OnDestroy()
+    {
+        if (droppedNote != null)
+        {
+            Instantiate(droppedNote);
+        }
+    }
 }
