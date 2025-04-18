@@ -36,6 +36,7 @@ public class StandardEnemyAI : EnemyAI
         seeker = GetComponent<Seeker>();
         rb = GetComponent<Rigidbody2D>();
         enemyShooting = GetComponent<EnemyShooting>();
+        player = GameObject.FindGameObjectWithTag("Player").transform;
 
         InvokeRepeating("Move", 0f, pathUpdateSeconds);
     }

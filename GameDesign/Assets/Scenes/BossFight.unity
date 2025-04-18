@@ -48336,7 +48336,7 @@ GameObject:
   - component: {fileID: 1023554882}
   m_Layer: 5
   m_Name: Ammo
-  m_TagString: Untagged
+  m_TagString: AmmoUI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -48827,7 +48827,7 @@ GameObject:
   - component: {fileID: 1254121412}
   m_Layer: 5
   m_Name: ReserveText
-  m_TagString: Untagged
+  m_TagString: ReserveText
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -49421,7 +49421,7 @@ GameObject:
   - component: {fileID: 1716380389}
   m_Layer: 5
   m_Name: HealthBar
-  m_TagString: Untagged
+  m_TagString: HealthBar
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -49543,6 +49543,63 @@ MonoBehaviour:
     m_NumColorKeys: 3
     m_NumAlphaKeys: 2
   fill: {fileID: 1033167346}
+--- !u!1001 &1718276857
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3640039060801218421, guid: d5efedfeb30084245b1852a26290c8af, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -83.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3640039060801218421, guid: d5efedfeb30084245b1852a26290c8af, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -12.27
+      objectReference: {fileID: 0}
+    - target: {fileID: 3640039060801218421, guid: d5efedfeb30084245b1852a26290c8af, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3640039060801218421, guid: d5efedfeb30084245b1852a26290c8af, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3640039060801218421, guid: d5efedfeb30084245b1852a26290c8af, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3640039060801218421, guid: d5efedfeb30084245b1852a26290c8af, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3640039060801218421, guid: d5efedfeb30084245b1852a26290c8af, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3640039060801218421, guid: d5efedfeb30084245b1852a26290c8af, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3640039060801218421, guid: d5efedfeb30084245b1852a26290c8af, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3640039060801218421, guid: d5efedfeb30084245b1852a26290c8af, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7732167710860989923, guid: d5efedfeb30084245b1852a26290c8af, type: 3}
+      propertyPath: m_Name
+      value: Player
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d5efedfeb30084245b1852a26290c8af, type: 3}
 --- !u!4 &1775168889 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2651849418295224118, guid: 3793f4925a9d3924daed2073dac14f6a, type: 3}
@@ -50043,3 +50100,4 @@ SceneRoots:
   - {fileID: 2590808176041984968}
   - {fileID: 1865154211}
   - {fileID: 2049185973}
+  - {fileID: 1718276857}

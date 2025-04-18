@@ -15,6 +15,7 @@ public class SimpleEnemyAI : EnemyAI
     {
         rb = GetComponent<Rigidbody2D>();
         enemyShooting = GetComponent<EnemyShooting>();
+        player = GameObject.FindGameObjectWithTag("Player").transform;
 
         // Generate patrol points dynamically
         pointA = transform.position - new Vector3(patrolDistance, 0, 0);

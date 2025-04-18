@@ -13,6 +13,9 @@ TagManager:
   - Gun
   - PausedUI
   - UI
+  - HealthBar
+  - AmmoUI
+  - ReserveText
   layers:
   - Default
   - TransparentFX

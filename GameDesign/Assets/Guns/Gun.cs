@@ -56,6 +56,9 @@ public class Gun : MonoBehaviour
         playerObject = GameObject.FindWithTag("Player");
         player = playerObject.GetComponent<Player>();
 
+        ammoUI = GameObject.FindGameObjectWithTag("AmmoUI");
+        reserveTextObject = GameObject.FindGameObjectWithTag("ReserveText");
+
         standardShootAction.Enable();
         standardShootAction.performed += ctx => Shoot(standardBullet, ref ammo, standardLaunchPower, true);
 

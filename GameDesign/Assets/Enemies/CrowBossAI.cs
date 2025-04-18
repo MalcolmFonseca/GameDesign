@@ -42,6 +42,7 @@ public class CrowBossAI : MonoBehaviour
 
     void Start()
     {
+        player = GameObject.FindGameObjectWithTag("Player").transform;
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
         centerPos = (Vector2)transform.position + Vector2.up * flightHeight;

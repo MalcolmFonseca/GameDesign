@@ -14,6 +14,11 @@ public class EnemyAI : MonoBehaviour
     
     protected EnemyShooting enemyShooting;
 
+    private void Start()
+    {
+        player = GameObject.FindGameObjectWithTag("Player").transform;
+    }
+
 
     public virtual void Move()
     {

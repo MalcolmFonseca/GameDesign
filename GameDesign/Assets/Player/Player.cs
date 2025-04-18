@@ -56,6 +56,7 @@ public class Player : MonoBehaviour
         pauseAction.performed += Pause;
         rigidbody2d = GetComponent<Rigidbody2D>();
 
+        healthBar = GameObject.FindGameObjectWithTag("HealthBar").GetComponent<HealthBar>();
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
 
@@ -165,6 +166,11 @@ public class Player : MonoBehaviour
 
     public void Respawn()
     {
+        healthBar = GameObject.FindGameObjectWithTag("HealthBar").GetComponent<HealthBar>();
+        pausedUIObject = GameObject.FindGameObjectWithTag("PausedUI");
+        pausedText = pausedUIObject.GetComponentInChildren<TMP_Text>();
+        exitButton = pausedUIObject.GetComponentInChildren<Button>();
+
         healthBar.SetHealth(maxHealth);
         
         string sceneName = SceneManager.GetActiveScene().name;
