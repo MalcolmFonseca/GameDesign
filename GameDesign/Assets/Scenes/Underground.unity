@@ -3331,6 +3331,7 @@ GameObject:
   m_Component:
   - component: {fileID: 713040585}
   - component: {fileID: 713040584}
+  - component: {fileID: 713040586}
   m_Layer: 0
   m_Name: UndergroundHole
   m_TagString: Untagged
@@ -3399,6 +3400,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &713040586
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 713040583}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5306fd9680069184fad9af00ab1489c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &718949398
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3628,6 +3641,7 @@ GameObject:
   m_Component:
   - component: {fileID: 783357222}
   - component: {fileID: 783357221}
+  - component: {fileID: 783357223}
   m_Layer: 0
   m_Name: BossFightHole
   m_TagString: Untagged
@@ -3696,6 +3710,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &783357223
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 783357220}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f869b85e5118c804e90f25feda4b38db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &785258430
 PrefabInstance:
   m_ObjectHideFlags: 0

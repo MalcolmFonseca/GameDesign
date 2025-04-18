@@ -202,7 +202,8 @@ MonoBehaviour:
   player: {fileID: 0}
   health: 10
   speed: 1200
-  detectionRange: 6
+  detectionRange: 15
+  droppedNote: {fileID: 0}
   pathUpdateSeconds: 1
   nextWaypointDistance: 3
   oscillationAmplitude: 4
