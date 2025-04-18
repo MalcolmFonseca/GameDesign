@@ -33,6 +33,8 @@ public class Gun : MonoBehaviour
 
     public GameObject standardBullet;
 
+    public int bulletDamage = 1;
+
 
     [Header("Collectible Ammo")]
     public InputAction specialShootAction;
@@ -177,6 +179,7 @@ public class Gun : MonoBehaviour
         //add all modifiers, will need to be added to when new upgrades are added in future versions
         magSize += upgrade.magSizeMod;
         standardLaunchPower += upgrade.launchPowerMod;
+        bulletDamage += upgrade.damageMod;
     }
 
     public void removeUpgrade(GunUpgrade upgrade)
@@ -185,6 +188,7 @@ public class Gun : MonoBehaviour
         //remove all modifiers, will need to be added to when new upgrades are added in future versions
         magSize -= upgrade.magSizeMod;
         standardLaunchPower -= upgrade.launchPowerMod;
+        bulletDamage -= upgrade.damageMod;
     }
 
     private void UpdateText()

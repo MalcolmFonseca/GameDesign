@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6251070287661905229}
   - component: {fileID: 7144689100448172586}
   - component: {fileID: 2512865161795639494}
+  - component: {fileID: 4074264902909320498}
   m_Layer: 0
   m_Name: StartingGun
   m_TagString: Gun
@@ -156,10 +157,20 @@ MonoBehaviour:
     m_Interactions: 
     m_SingletonActionBindings: []
     m_Flags: 0
+  audioSource: {fileID: 4074264902909320498}
+  standardShoot:
+  - {fileID: 8300000, guid: d51dce58cf00a674fb149923d268e998, type: 3}
+  - {fileID: 8300000, guid: 1f83b94c966e79e45bb735c43ad39e83, type: 3}
+  - {fileID: 8300000, guid: daa768bd2683b0740b2fac6b16d643e0, type: 3}
+  specialShoot:
+  - {fileID: 8300000, guid: e4cbc97418f7dfb4ea02c18aa7d887e3, type: 3}
+  - {fileID: 8300000, guid: 07ddda21392a7794a99cae35d173d2a1, type: 3}
+  - {fileID: 8300000, guid: 917bd28719f50a049a77a54158a57506, type: 3}
   ammoUI: {fileID: 0}
   bulletPrefab: {fileID: 7304447922337180349, guid: d97135c54178d7446a40ba9f0b895087, type: 3}
   reserveTextObject: {fileID: 0}
   standardBullet: {fileID: 914456405562568080, guid: 4958b6648bae5f24fa2fa2e088fe3bb1, type: 3}
+  bulletDamage: 1
   specialShootAction:
     m_Name: Special Shoot
     m_Type: 0
@@ -180,6 +191,103 @@ MonoBehaviour:
   specialAmmoUI: {fileID: 0}
   specialBulletPrefab: {fileID: 7304447922337180349, guid: c2f2815a9b8dea040bc9eee6e12b3476, type: 3}
   specialBullet: {fileID: 914456405562568080, guid: 5363c7b78a27a5c4caae8db980c19378, type: 3}
+--- !u!82 &4074264902909320498
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 406775927677885997}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &5977394971794848160
 GameObject:
   m_ObjectHideFlags: 0
@@ -415,11 +523,6 @@ MonoBehaviour:
       m_Flags: 0
     m_Flags: 0
   paused: 0
-  audioSource: {fileID: 5102133982247064639}
-  shootSounds:
-  - {fileID: 8300000, guid: d51dce58cf00a674fb149923d268e998, type: 3}
-  - {fileID: 8300000, guid: 1f83b94c966e79e45bb735c43ad39e83, type: 3}
-  - {fileID: 8300000, guid: daa768bd2683b0740b2fac6b16d643e0, type: 3}
   respawnPoint: {x: -83.4, y: -12.27, z: 0}
 --- !u!61 &4203129617448744425
 BoxCollider2D:
