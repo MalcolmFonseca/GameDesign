@@ -22,6 +22,10 @@ public class Gun : MonoBehaviour
     private float reserve = Mathf.Infinity;
     private int magSize = 5;
 
+    public AudioSource audioSource;
+    public AudioClip[] standardShoot;
+    public AudioClip[] specialShoot;
+
     [SerializeField] private GameObject ammoUI;
     private List<GameObject> bulletList = new List<GameObject>();
     [SerializeField] private GameObject bulletPrefab;
@@ -103,8 +107,17 @@ public class Gun : MonoBehaviour
                 player.Shoot(launchPower, transform.right);
                 ammoCount--;
 
-                // remove ammo from correct list
-                if (canReload) RemoveUIBullet(bulletList);
+                // pick and play a random shooting sound
+                AudioClip[] pool = canReload ? standardShoot : specialShoot;
+                if (pool != null && pool.Length > 0)
+                {
+                    int idx = Random.Range(0, pool.Length);
+                    audioSource.PlayOneShot(pool[idx]);
+                }
+
+
+            // remove ammo from correct list
+            if (canReload) RemoveUIBullet(bulletList);
 
                 else RemoveUIBullet(specialBulletList);
             }

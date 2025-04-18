@@ -29,9 +29,6 @@ public class Player : MonoBehaviour
     private TMP_Text pausedText;
     private Button exitButton;
 
-    public AudioSource audioSource;
-    public AudioClip[] shootSounds;
-
     private Gun gun;
 
     public Vector3 respawnPoint;
@@ -102,12 +99,6 @@ public class Player : MonoBehaviour
 
     public void Shoot(float launchPower, Vector2 direction)
     {
-        if (shootSounds != null && shootSounds.Length > 0)
-        {
-            int i = Random.Range(0, shootSounds.Length);
-            audioSource.PlayOneShot(shootSounds[i]);
-        }
-
         if (!Grounded())
         {
             rigidbody2d.linearVelocity = new Vector2(-direction.x * launchPower, -direction.y * launchPower);
